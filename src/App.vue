@@ -1,17 +1,20 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <main>
+    <Dashboard />
+    <Login />
+  </main>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Login from './components/Login.vue';
+import Dashboard from './components/Dashboard.vue';
+import 'bulma/css/bulma.css';
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Dashboard,
+    Login
   }
 }
 </script>
