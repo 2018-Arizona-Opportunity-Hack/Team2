@@ -1,15 +1,15 @@
 <template>
-  <div id="app">
-  <Linechart :data ="dicarr"/>
-  </div>
-  
+  <main>
+    <Login v-if="!loggedIn" />
+    <Dashboard v-if="loggedIn" />
+  </main>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-//import Piechart from './components/Piechart.vue'
-//import Donutchart from './components/Donutchart.vue'
-import Linechart from './components/Linechart.vue'
+import {mapState} from 'vuex';
+import Login from './components/Login.vue';
+import Dashboard from './components/Dashboard.vue';
+import 'bulma/css/bulma.css';
 
 var dicarr = {2018:100,2017:1000,2016:1000,2015:1}
 export default{
@@ -18,19 +18,11 @@ export default{
     dicarr
   }),
   components: {
-    HelloWorld,
-   Linechart
+    Dashboard,
+    Login
+  },
+  computed: {
+    ...mapState(['loggedIn'])
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
