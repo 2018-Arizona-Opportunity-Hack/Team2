@@ -3,7 +3,7 @@
     <form class="panel column" @submit.prevent="createForm">
       <div class="panel-heading">
         <label class="label" for="formName">Form Name</label>
-        <input class="input" id="formName" type="text" v-model="formName" />
+        <input class="input" id="formName" type="text"  autocomplete="off" v-model="formName" />
       </div>
 
       <div class="panel-block">

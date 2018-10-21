@@ -112,7 +112,7 @@ export default {
   computed: {
     ...mapState(['error', 'loading']),
 
-    disableSubmit() {
+    disableSubmit: function() {
       return !this.validEmail || !this.validPassword;
     },
     validEmail() {
