@@ -1,20 +1,50 @@
 <template>
   <div class="dashboard">
-    dashboard
-    <button
-      class="button"
-      @click="loggingOut">
-      log out
-    </button>
+    <nav
+      class="navbar is-fixed-top is-primary"
+      role="navigation"
+      aria-label="main navigation"
+    >
+      <MenuButton
+        name="Hi there"
+        v-bind:list="settingsList"
+      />
+    </nav>
+
+    <div>
+      <CreateForm />
+      <FormsList :data="formItems" />
+    </div>
+
   </div>
 </template>
 
 <script>
-import {mapActions} from 'vuex';
+import {mapActions, mapState} from 'vuex';
+import MenuButton from './utilities/MenuButton';
+import FormsList from './dashboard/FormsList';
+import CreateForm from './dashboard/CreateForm';
 
 export default {
+  name: 'dashboard',
+  components: {
+    CreateForm,
+    FormsList,
+    MenuButton
+  },
+  data: function() {
+    return {
+      settingsList: [{name: 'Log Out', onClick: this.loggingOut}]
+    };
+  },
+  computed: {
+    ...mapState({
+      formItems: (state) => state.formsList
+    })
+  },
   methods: {
     ...mapActions(['loggingOut'])
   }
 };
+
 </script>
