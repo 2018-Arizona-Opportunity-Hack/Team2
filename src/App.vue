@@ -1,17 +1,24 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <main>
+    <Dashboard v-if="loggedIn" />
+    <Login v-if="!loggedIn" />
+  </main>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import {mapState} from 'vuex';
+import Login from './components/Login.vue';
+import Dashboard from './components/Dashboard.vue';
+import 'bulma/css/bulma.css';
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Dashboard,
+    Login
+  },
+  computed: {
+    ...mapState(['loggedIn'])
   }
 }
 </script>
