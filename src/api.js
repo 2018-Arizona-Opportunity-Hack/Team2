@@ -1,10 +1,33 @@
-export function login(data) {
-  return timedPromise((resolve, reject) => {
-    (true && resolve || reject)({
-      ...data,
-      userId: 'something'
-    });
-  }, 2000);
+/* global firebase */
+
+export function logout() {
+  return firebase.auth().signOut();
+}
+
+export function login({email, password}) {
+  return new Promise((resolve, reject) => {
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then((response) => {
+        const {user: {uid}} = response;
+        resolve({userId: uid});
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+}
+
+export function createUser({email, password}) {
+  return new Promise((resolve, reject) => {
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then((response) => {
+        const {user: {uid}} = response;
+        resolve({userId: uid});
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
 }
 
 const stringyList = window.localStorage.getItem('formsList');

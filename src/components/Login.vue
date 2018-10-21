@@ -57,17 +57,31 @@
         </div>
       </div>
       <div class="field">
-        <button
-          class="button"
-          type="submit"
-          v-bind:disabled="disableSubmit"
-          v-bind:class="{
-            'is-success': !disableSubmit,
-            'is-loading': loading
-          }"
-        >
-          Submit
-        </button>
+        <div class="buttons">
+          <button
+            class="button"
+            type="submit"
+            v-bind:disabled="disableSubmit"
+            v-bind:class="{
+              'is-success': !disableSubmit,
+              'is-loading': loading
+            }"
+          >
+            Login
+          </button>
+          <button
+            class="button"
+            type="button"
+            @click="onRegister"
+            v-bind:disabled="disableSubmit"
+            v-bind:class="{
+              'is-loading': loading
+            }"
+          >
+            Register
+          </button>
+        </div>
+
       </div>
     </form>
   </section>
@@ -98,7 +112,7 @@ export default {
   computed: {
     ...mapState(['error', 'loading']),
 
-    disableSubmit() {
+    disableSubmit: function() {
       return !this.validEmail || !this.validPassword;
     },
     validEmail() {
@@ -114,6 +128,14 @@ export default {
       const {email, password} = this;
       const data = {email, password: SHA256(password).toString()};
 
+      this.loggingIn(data)
+        .then(() =>
+          Object.assign(this, {password: ''})
+        );
+    },
+    onRegister() {
+      const {email, password} = this;
+      const data = {register: true, email, password: SHA256(password).toString()};
       this.loggingIn(data)
         .then(() =>
           Object.assign(this, {password: ''})

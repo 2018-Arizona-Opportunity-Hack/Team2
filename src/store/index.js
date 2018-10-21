@@ -51,17 +51,22 @@ export const actions = {
   },
   loggingOut(context) {
     window.sessionStorage.removeItem('loggedIn');
-    return context.commit('loggingInOut', false);
+    context.commit('loggingInOut', false);
+    api.logout()
+      .then(() => console.log('logged out success'))
+      .catch(() => console.log('logged out fail'));
   },
   loggingIn(context, data) {
     context.commit('loading', true);
+
     return new Promise((resolve) => {
-      api.login(data)
-        .then(() => {
-          window.sessionStorage.setItem('loggedIn', 'true');
+      (data.register ? api.createUser : api.login)(data)
+        .then(({userId}) => {
+          window.sessionStorage.setItem('loggedIn', userId);
 
           context.commit('loading', false);
           context.commit('loggingInOut', true);
+
           context.dispatch('dashboardLoadData');
 
           resolve('done');

@@ -7,6 +7,20 @@
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <title>snazzy-donation-inventory-management</title>
+
+    <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDXOa0IciS54W7V0H9BQNghBatbZh8ZcuI",
+        authDomain: "ohacks-8e26a.firebaseapp.com",
+        databaseURL: "https://ohacks-8e26a.firebaseio.com",
+        projectId: "ohacks-8e26a",
+        storageBucket: "ohacks-8e26a.appspot.com",
+        messagingSenderId: "894381066796"
+      };
+      firebase.initializeApp(config);
+    </script>
   </head>
   <body>
     <noscript>
