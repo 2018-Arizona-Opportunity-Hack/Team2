@@ -1,17 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title>snazzy-donation-inventory-management</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Firebase Hosting</title>
+
+    </style>
   </head>
   <body>
-    <noscript>
-      <strong>We're sorry but snazzy-donation-inventory-management doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
+    <!-- <div>
+      <p>Email</p>
+      <input id='email'/>
+      <p>Password</p>
+      <input id='pass'/>
+    </div> -->
+    <div class='inputdiv'>
+      <p>Name</p>
+      <input fieldname='name'/>
+    </div>
+    <div class='inputdiv'>
+      <p>Address</p>
+      <input fieldname='address'/>
+    </div>
+    <div class='inputdiv'>
+      <p>Category</p>
+      <input fieldname='category'/>
+    </div>
+    <div class='inputdiv'>
+      <p>Amount</p>
+      <input fieldname='amount'/>
+    </div>
+    <button id='submit'>Make like a bottom and SUBMIT</button>
+    <button onclick=savedata()>Login</button>
+    <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDXOa0IciS54W7V0H9BQNghBatbZh8ZcuI",
+        authDomain: "ohacks-8e26a.firebaseapp.com",
+        databaseURL: "https://ohacks-8e26a.firebaseio.com",
+        projectId: "ohacks-8e26a",
+        storageBucket: "ohacks-8e26a.appspot.com",
+        messagingSenderId: "894381066796"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script src='./index.js'></script>
   </body>
 </html>
