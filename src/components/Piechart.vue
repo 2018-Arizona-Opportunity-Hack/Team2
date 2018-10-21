@@ -1,9 +1,7 @@
 <template>
   <div class="example">
-    <apexcharts width="500" height="350" type="donut" :options="chartOptions" :series="series"></apexcharts>
-    <div>
-       <button @click="updateChart">Update!</button>
-    </div>
+    <apexcharts width="500" height="350" type="bar" :options="chartOptions" :series="series"></apexcharts>
+     
   </div>
 </template>
 
@@ -11,26 +9,34 @@
 //import VueApexCharts from 'vue-apexcharts'
 import VueApexCharts from 'vue-apexcharts'
 export default {
-  name: 'DonutExample',
+  name: 'BarExample',
   components: {
     apexcharts: VueApexCharts,
   },
-  props:['data'],
+  props: ['data'],
   data: function() {
-      const dicarr = this.data;
-      var label = [];
-      var content = [];
-      for (var key in dicarr){
-          label.push(key);
-          content.push(dicarr[key]);
-      }
+    //dicarr is dictionary array
+    const dicarr = this.data;
+    var x_ = [];
+    var y_ = [];
+        for (var key in dicarr){
+            x_.push(key);
+            y_.push(dicarr[key]);
+          }
     return {
       chartOptions: {
-        labels: label
+        
+        xaxis: {
+          
+          categories: x_//[year[0],year[1],year[2],year[3]]//dicarr[key]//year
+        }
       },
-      series: content
+      series: [{
+        name: 'series-1',
+        data: y_
+      }]
     }
-  }
-  
+  },
+ 
 }
 </script>
