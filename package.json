@@ -12,15 +12,18 @@
   },
   "dependencies": {
     "bulma": "^0.7.2",
-    "vue": "^2.5.17"
+    "chart.js": "^2.7.3",
+    "vue": "^2.5.17",
+    "vue-apexcharts": "^1.2.2",
+    "vue-chartkick": "^0.5.0"
   },
   "devDependencies": {
     "@vue/cli": "^3.0.5",
     "@vue/cli-plugin-babel": "^3.0.5",
     "@vue/cli-plugin-eslint": "^3.0.5",
     "@vue/cli-service": "^3.0.5",
-    "vue-template-compiler": "^2.5.17",
-    "vue": "^2.5.17"
+    "vue": "^2.5.17",
+    "vue-template-compiler": "^2.5.17"
   },
   "eslintConfig": {
     "root": true,
