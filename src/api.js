@@ -1,4 +1,7 @@
 export function login(data) {
+  console.log(data);
+  console.log(data['email'] + " " + data['password']);
+  firebase.auth().SignInWithEmailAndPassword(data['email'], data['password']);
   return timedPromise((resolve, reject) => {
     (true && resolve || reject)({
       ...data,
