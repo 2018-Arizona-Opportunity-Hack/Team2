@@ -10,11 +10,30 @@
       </div>
     </nav>
 
-    <div>
-      <CreateForm />
-      <FormsList :data="formItems" />
-    </div>
+    <section class="section">
+      <div class="tabs">
+        <ul>
+          <li v-bind:class="{'is-active': tab === 0}"><a @click="tab = 0">CHART</a></li>
+          <li v-bind:class="{'is-active': tab === 1}"><a @click="tab = 1">Forms</a></li>
+          <li v-bind:class="{'is-active': tab === 2}"><a @click="tab = 2">other</a></li>
+        </ul>
+      </div>
 
+      <div class="panel">
+        <div v-if="tab === 0" class="panel-block">
+          CHART
+        </div>
+
+        <div v-if="tab === 1" class="panel-block">
+          <CreateForm />
+          <FormsList :data="formItems" />
+        </div>
+
+        <div v-if="tab === 2" class="panel-block">
+          OTHER
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -33,7 +52,7 @@ export default {
   },
   data: function() {
     return {
-      settingsList: [{name: 'Log Out', onClick: this.loggingOut}]
+      tab: 1,
     };
   },
   computed: {
