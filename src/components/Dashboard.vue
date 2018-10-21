@@ -21,7 +21,7 @@
 
       <div class="panel">
         <div v-if="tab === 0" class="panel-block">
-          CHART
+          <Superchart />
         </div>
 
         <div v-if="tab === 1" class="panel-block">
@@ -42,13 +42,15 @@ import {mapActions, mapState} from 'vuex';
 import MenuButton from './utilities/MenuButton';
 import FormsList from './dashboard/FormsList';
 import CreateForm from './dashboard/CreateForm';
+import Superchart from '../Superchart';
 
 export default {
   name: 'dashboard',
   components: {
     CreateForm,
     FormsList,
-    MenuButton
+    MenuButton,
+    Superchart
   },
   data: function() {
     return {
