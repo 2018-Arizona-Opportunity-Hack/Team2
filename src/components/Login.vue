@@ -57,29 +57,30 @@
         </div>
       </div>
       <div class="field">
-        <button
-          class="button"
-          type="submit"
-          v-bind:disabled="disableSubmit"
-          v-bind:class="{
-            'is-success': !disableSubmit,
-            'is-loading': loading
-          }"
-        >
-          Submit
-        </button>
-        <button
-          class="button"
-          style="margin-left: 10px;"
-          type="button"
-          @click="onRegister"
-          v-bind:disabled="disableSubmit"
-          v-bind:class="{
-            'is-loading': loading
-          }"
-        >
-          Register
-        </button>
+        <div class="buttons">
+          <button
+            class="button"
+            type="submit"
+            v-bind:disabled="disableSubmit"
+            v-bind:class="{
+              'is-success': !disableSubmit,
+              'is-loading': loading
+            }"
+          >
+            Login
+          </button>
+          <button
+            class="button"
+            type="button"
+            @click="onRegister"
+            v-bind:disabled="disableSubmit"
+            v-bind:class="{
+              'is-loading': loading
+            }"
+          >
+            Register
+          </button>
+        </div>
 
       </div>
     </form>

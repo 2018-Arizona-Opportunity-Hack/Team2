@@ -1,5 +1,9 @@
 /* global firebase */
 
+export function logout() {
+  return firebase.auth().signOut();
+}
+
 export function login({email, password}) {
   return new Promise((resolve, reject) => {
     firebase.auth().signInWithEmailAndPassword(email, password)

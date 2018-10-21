@@ -5,10 +5,9 @@
       role="navigation"
       aria-label="main navigation"
     >
-      <MenuButton
-        name="Hi there"
-        v-bind:list="settingsList"
-      />
+      <div class="navbar-item is-right">
+        <button class="button" @click="loggingOut">Log out</button>
+      </div>
     </nav>
 
     <div>

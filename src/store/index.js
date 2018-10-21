@@ -51,7 +51,10 @@ export const actions = {
   },
   loggingOut(context) {
     window.sessionStorage.removeItem('loggedIn');
-    return context.commit('loggingInOut', false);
+    context.commit('loggingInOut', false);
+    api.logout()
+      .then(() => console.log('logged out success'))
+      .catch(() => console.log('logged out fail'));
   },
   loggingIn(context, data) {
     context.commit('loading', true);
