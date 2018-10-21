@@ -1,17 +1,25 @@
 <template>
   <div id="app">
-  <Piechart/>
+  <Linechart :data ="dicarr"/>
   </div>
+  
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-import Piechart from './components/Piechart.vue'
-export default {
+//import Piechart from './components/Piechart.vue'
+//import Donutchart from './components/Donutchart.vue'
+import Linechart from './components/Linechart.vue'
+
+var dicarr = {2018:100,2017:1000,2016:1000,2015:1}
+export default{
   name: 'app',
+  data: () => ({
+    dicarr
+  }),
   components: {
     HelloWorld,
-    Piechart
+   Linechart
   }
 }
 </script>
