@@ -55,13 +55,15 @@ export const actions = {
   },
   loggingIn(context, data) {
     context.commit('loading', true);
+
     return new Promise((resolve) => {
-      api.login(data)
-        .then(() => {
-          window.sessionStorage.setItem('loggedIn', 'true');
+      (data.register ? api.createUser : api.login)(data)
+        .then(({userId}) => {
+          window.sessionStorage.setItem('loggedIn', userId);
 
           context.commit('loading', false);
           context.commit('loggingInOut', true);
+
           context.dispatch('dashboardLoadData');
 
           resolve('done');

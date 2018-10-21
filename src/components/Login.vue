@@ -68,6 +68,19 @@
         >
           Submit
         </button>
+        <button
+          class="button"
+          style="margin-left: 10px;"
+          type="button"
+          @click="onRegister"
+          v-bind:disabled="disableSubmit"
+          v-bind:class="{
+            'is-loading': loading
+          }"
+        >
+          Register
+        </button>
+
       </div>
     </form>
   </section>
@@ -114,6 +127,14 @@ export default {
       const {email, password} = this;
       const data = {email, password: SHA256(password).toString()};
 
+      this.loggingIn(data)
+        .then(() =>
+          Object.assign(this, {password: ''})
+        );
+    },
+    onRegister() {
+      const {email, password} = this;
+      const data = {register: true, email, password: SHA256(password).toString()};
       this.loggingIn(data)
         .then(() =>
           Object.assign(this, {password: ''})
