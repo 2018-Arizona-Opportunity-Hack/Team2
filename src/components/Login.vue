@@ -1,5 +1,11 @@
 <template>
-  <div class="login">
+  <section class="section login">
+    <div v-if="error"
+        class="notification is-danger">
+      <span aria-live="assertive">
+        {{error}}
+      </span>
+    </div>
     <form @submit.prevent="onSubmit">
       <div class="field">
         <label class="label" for="emailInput">
@@ -64,7 +70,7 @@
         </button>
       </div>
     </form>
-  </div>
+  </section>
 </template>
 
 <style scoped>
@@ -81,14 +87,17 @@
 
 
 <script>
+import {mapActions, mapState} from 'vuex';
 import SHA256 from 'crypto-js/sha256';
+
 const emailRegEx = /^\w+[\w-.]*@([\w-]+\.)+[\w-]+$/;
-const submitStub = () => {/* stub */};
 
 export default {
   name: 'Login',
-  data: () => ({email: '', password: '', loading: false}),
+  data: () => ({email: '', password: ''}),
   computed: {
+    ...mapState(['error', 'loading']),
+
     disableSubmit() {
       return !this.validEmail || !this.validPassword;
     },
@@ -100,11 +109,15 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['loggingIn']),
     onSubmit() {
       const {email, password} = this;
       const data = {email, password: SHA256(password).toString()};
-      this.loading = true;
-      submitStub({data});
+
+      this.loggingIn(data)
+        .then(() =>
+          Object.assign(this, {password: ''})
+        );
     }
   }
 }
